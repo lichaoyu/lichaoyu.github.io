@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="随想," />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -86,13 +86,13 @@
 
 <meta name="description" content="null">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/11/14/helloWorld/index.html">
+<meta property="og:title" content="iOS8后通知中心快捷回复">
+<meta property="og:url" content="http://yoursite.com/2016/11/23/iOS8后通知中心快捷回复/index.html">
 <meta property="og:site_name" content="李晁宇的博客">
 <meta property="og:description" content="null">
-<meta property="og:updated_time" content="2016-11-27T04:12:02.000Z">
+<meta property="og:updated_time" content="2016-11-23T09:06:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
+<meta name="twitter:title" content="iOS8后通知中心快捷回复">
 <meta name="twitter:description" content="null">
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/14/helloWorld/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/23/iOS8后通知中心快捷回复/"/>
 
 
 
 
 
-  <title> Hello World | 李晁宇的博客 </title>
+  <title> iOS8后通知中心快捷回复 | 李晁宇的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -238,7 +238,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/14/helloWorld/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS8后通知中心快捷回复/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="李晁宇">
@@ -262,7 +262,7 @@
             
             
               
-                Hello World
+                iOS8后通知中心快捷回复
               
             
           </h1>
@@ -275,8 +275,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-14T18:25:06+08:00">
-                2016-11-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T13:21:42+08:00">
+                2016-11-23
               </time>
             
 
@@ -291,8 +291,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/14/helloWorld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/14/helloWorld/" itemprop="commentCount"></span>
+                <a href="/2016/11/23/iOS8后通知中心快捷回复/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/iOS8后通知中心快捷回复/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -302,7 +302,7 @@
 
           
           
-             <span id="/2016/11/14/helloWorld/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2016/11/23/iOS8后通知中心快捷回复/" class="leancloud_visitors" data-flag-title="iOS8后通知中心快捷回复">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -331,22 +331,18 @@
       
 
       
-        <p>我终于弄了一个博客，以后想写什么东西就在这吧。</p>
-<!-- ## 无量天尊，哈利路亚，阿弥陀佛么么哒   
-## [Github](https://github.com/lichaoyu)
-## [Twitter](https://twitter.com/geqianjiasuo)
-## [Facebook](https://www.facebook.com/profile.php?id=100010175671254)
-## [微博](https://weibo.com/2316215783)
-## [豆瓣](https://www.douban.com/people/82144018/)
-## [知乎](https://www.zhihu.com/people/li-chao-yu-33)
-## [简书](http://www.jianshu.com/users/d70621c2ca06/timeline)
+        <p>这两天我们老大想加几个新的功能，分到我这边的任务是程序外快捷回复，虽然很简单，但是也遇到了几个坑，然后分享一下。</p>
+<p>1.首先需要后台服务器支持，增加category，这个需要和UIMutableUserNotificationCategory实例对象的属性identifier保持一致，苹果官方文档<a href="https://developer.apple.com/library/prerelease/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html" target="_blank" rel="external">戳这里查看</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">"aps"</span>:&#123;<span class="string">"alert"</span>:<span class="string">"远程推送内容"</span>, <span class="string">"sound"</span>:<span class="string">"default.mov"</span>, <span class="string">"badge"</span>: 1, <span class="string">"category"</span>:<span class="string">"alert"</span>&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>2.创建消息action<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">UIMutableUserNotificationAction *replyAction = [[UIMutableUserNotificationAction alloc] init];</div><div class="line">replyAction.activationMode = UIUserNotificationActivationModeForeground;</div><div class="line"><span class="keyword">if</span> (kCurrentSystemVersion &gt;= 9.0)</div><div class="line">&#123;</div><div class="line">    replyAction.behavior = UIUserNotificationActionBehaviorTextInput;</div><div class="line">    replyAction.parameters = @&#123;UIUserNotificationTextInputActionButtonTitleKey:@<span class="string">"回复"</span>&#125;;</div><div class="line">    replyAction.activationMode = UIUserNotificationActivationModeBackground;</div><div class="line">&#125;</div><div class="line">replyAction.title = @<span class="string">"回复"</span>;</div><div class="line">replyAction.identifier = @<span class="string">"replyAction"</span>;</div><div class="line">replyAction.destructive = NO;</div><div class="line">replyAction.authenticationRequired = NO;</div></pre></td></tr></table></figure></p>
+<p>3.创建消息类别集合<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">UIMutableUserNotificationCategory *categorys = [[UIMutableUserNotificationCategory alloc] init];</div><div class="line">categorys.identifier = @<span class="string">"alert"</span>;</div><div class="line">NSArray *actions = @[replyAction];</div><div class="line">[categorys <span class="built_in">set</span>Actions:actions <span class="keyword">for</span>Context:UIUserNotificationActionContextDefault];</div></pre></td></tr></table></figure></p>
+<p>4.设置推送属性设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:[NSSet <span class="built_in">set</span>WithObject:categorys]];</div><div class="line">[[UIApplication sharedApplication] registerUserNotificationSettings:settings];</div></pre></td></tr></table></figure></p>
+<p>上面这些代码放在application:didFinishLaunchingWithOptions:里面</p>
+<p>5.在成功注册的代理回调方法里面注册通知<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#ifdef __IPHONE_8_0</span></div><div class="line">- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings</div><div class="line">&#123;</div><div class="line">    NSLog(@<span class="string">"application:didRegisterUserNotificationSettings:  %@"</span>, notificationSettings);</div><div class="line">    //注册远程通知</div><div class="line">    [application registerForRemoteNotifications];</div><div class="line">&#125;</div><div class="line"><span class="comment">#endif</span></div></pre></td></tr></table></figure></p>
+<p>6.action动作回调<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#ifdef __IPHONE_8_0</span></div><div class="line">//iOS9.0之前只能跳到应用内处理，我这里处理的是跳到和某人的私聊界面</div><div class="line">- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier <span class="keyword">for</span>RemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler &#123;</div><div class="line">    NSString *senderId = [userInfo lx_stringForKey:@<span class="string">"im_accountID"</span>];</div><div class="line">    NSString *customUrl = [NSString stringWithFormat:@<span class="string">"lianxisc://chat/chatDetail?otherId=%@"</span>, senderId];</div><div class="line">    [SCUriManager parseURI:customUrl];</div><div class="line">    <span class="keyword">if</span> (completionHandler)</div><div class="line">    &#123;</div><div class="line">        completionHandler();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">#endif</span></div></pre></td></tr></table></figure></p>
+<p>[SCUriManager parseURI:customUrl] 通过app内自定义的跳转链接，最终调用了NavigationController的push，假如app not running或者被killed，会来不及响应push操作，把push操作放在dispatch_after代码块里，出让了0.3S的程序启动时间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#ifdef __IPHONE_9_0</span></div><div class="line">//iOS9之后可以在应用外处理一些事情(输入框的样式)，直接在外面快速回复别人</div><div class="line">- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier <span class="keyword">for</span>RemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler &#123;</div><div class="line">    NSString *senderId = [userInfo lx_stringForKey:@<span class="string">"im_accountID"</span>];</div><div class="line">    NSString *content = [responseInfo lx_stringForKey:UIUserNotificationActionResponseTypedTextKey];</div><div class="line">    SCMessage *message = [[SCMessage alloc] init];</div><div class="line">    //同步请求</div><div class="line">    [SCIMM syncRequestForSendMessage:message success:^(SCMessage *message) &#123;</div><div class="line">        <span class="keyword">if</span> (completionHandler)</div><div class="line">        &#123;</div><div class="line">            [LXPushServer goOffline];</div><div class="line">            completionHandler();</div><div class="line">        &#125;</div><div class="line">    &#125; failure:^(NSString *errorDescription) &#123;</div><div class="line">        <span class="keyword">if</span> (completionHandler)</div><div class="line">        &#123;</div><div class="line">            [LXPushServer goOffline];</div><div class="line">            completionHandler();</div><div class="line">        &#125;</div><div class="line">    &#125;];</div><div class="line">    //强制退出app</div><div class="line">    <span class="built_in">exit</span>(0);</div><div class="line">&#125;</div><div class="line"><span class="comment">#endif</span></div></pre></td></tr></table></figure>
+<p>坑一：异步请求回不来，改用同步请求；<br>坑二：程序not runing或者被killed，我用控制台看了下app的进程，苹果在后台启动你的app，先进入<br>application:didFinishLaunchingWithOptions:，这里面会做些程序初始化操作，我们在这里面和后台做了TCP连接，后台以为程序进入了前台，不再发送苹果推送，我自己想的解决方法是完成自己的操作，通知后台下线，然后强制关闭app。<br>执行完操作，一定要调用completionHandler()，苹果这样说:A block that you must call when you are finished performing the action.</p>
 
-<center>
-    <p><img src="/images/WechatIMG44.png" align="center" width="300" height="300"></p>
-</center> -->
-<!-- <center>
-    <p><img src="http://i1250.photobucket.com/albums/hh539/lichaoyu/WechatIMG44_zpshrhusld5.jpeg" border="0" alt=" photo WechatIMG44_zpshrhusld5.jpeg" align="center" width="300" height="300"></p>
-</center> -->
       
     </div>
 
@@ -390,7 +386,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随想/" rel="tag"># 随想</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -399,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/12/hexo/" rel="next" title="Hexo">
-                <i class="fa fa-chevron-left"></i> Hexo
+              <a href="/2016/11/23/快捷回复/" rel="next" title="iOS8后通知中心快捷回复">
+                <i class="fa fa-chevron-left"></i> iOS8后通知中心快捷回复
               </a>
             
           </div>
@@ -409,8 +405,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/17/找到自己，世界就会找到你/" rel="prev" title="找到自己，世界就会找到你">
-                找到自己，世界就会找到你 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/27/养了一只小狗/" rel="prev" title="养了一只小狗">
+                养了一只小狗 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -460,8 +456,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/14/helloWorld/"
-           data-title="Hello World" data-url="http://yoursite.com/2016/11/14/helloWorld/">
+      <div class="ds-thread" data-thread-key="2016/11/23/iOS8后通知中心快捷回复/"
+           data-title="iOS8后通知中心快捷回复" data-url="http://yoursite.com/2016/11/23/iOS8后通知中心快捷回复/">
       </div>
     
   </div>
